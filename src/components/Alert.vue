@@ -1,7 +1,11 @@
 <template>
   <transition name="fade">
-    <div class="copy-alert" :class="alertClass" v-if="visible">
-      <span class="copy-alert__text">
+    <div
+      class="absolute top-0 right-0 px-6 py-3 transform -translate-x-4 translate-y-4 rounded"
+      :class="alertClass"
+      v-if="visible"
+    >
+      <span class="text-lg font-semibold leading-none text-white">
         {{ alertText }}
       </span>
     </div>
@@ -33,14 +37,6 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.copy-alert {
-  @apply absolute top-0 right-0 px-6 py-3 transform -translate-x-4 translate-y-4 rounded;
-
-  &__text {
-    @apply leading-none text-white text-lg font-semibold;
-  }
-}
-
 .fade-enter-active,
 .fade-leave-active {
   @apply transition-opacity duration-500;
