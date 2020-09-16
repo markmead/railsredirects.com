@@ -18,19 +18,20 @@
           class="w-48 p-6 text-lg placeholder-gray-400 bg-gray-200 border-0 rounded-lg form-input"
           placeholder="STATUS"
         />
-        <button
-          type="button"
-          class="text-sm text-gray-700 underline uppercase hover:no-underline"
-        >How it works</button>
+        <button type="button" @click="help = true" class="text-sm text-gray-700 underline uppercase hover:no-underline">
+          How it works
+        </button>
       </div>
-      <div>
+      <div class="space-x-4">
         <button
           type="button"
           class="px-12 py-5 text-lg leading-none text-white uppercase bg-green-600 rounded-lg"
           v-clipboard:copy="generatedRedirects"
           v-clipboard:success="handleCopySuccess"
           v-clipboard:error="handleCopyError"
-        >Copy Code</button>
+        >
+          Copy Code
+        </button>
       </div>
     </div>
 
@@ -47,7 +48,9 @@
       <NoUpload v-if="results === null" />
     </div>
 
-    <textarea v-html="generatedRedirects" class="hidden"></textarea>
+    <Modal v-if="help" @action="help = false">
+      <HowItWorks />
+    </Modal>
   </main>
 </template>
 
@@ -57,6 +60,8 @@ import Alert from '@/components/Alert'
 import Title from '@/components/Title'
 import Upload from '@/components/Upload'
 import NoUpload from '@/components/NoUpload'
+import HowItWorks from '@/components/HowItWorks'
+import Modal from '@/components/Modal'
 
 export default {
   data() {
@@ -66,6 +71,7 @@ export default {
       results: null,
       status: '301',
       strip: '',
+      help: false,
     }
   },
   computed: {
@@ -116,6 +122,8 @@ export default {
     Title,
     Upload,
     NoUpload,
+    HowItWorks,
+    Modal,
   },
 }
 </script>
