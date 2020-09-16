@@ -1,11 +1,19 @@
 <template>
-  <div class="flex items-center justify-between p-4 rounded bg-gray-50">
-    <code class="text-sm">get "{{ from }}", to: redirect("{{ to }}", status: {{ status }})</code>
-    <button
-      type="button"
-      @click="fireAction(index)"
-      class="flex-shrink-0 px-6 py-3 ml-4 leading-none text-white bg-red-500 rounded"
-    >Remove</button>
+  <div class="flex items-center justify-between p-2 rounded-lg bg-gray-50">
+    <code
+      class="flex-1 font-mono text-sm"
+    >get "{{ from }}", to: redirect("{{ to }}", status: {{ status }})</code>
+    <div class="flex-shrink-0 ml-4 space-x-4">
+      <button
+        type="button"
+        class="px-5 py-3 text-sm leading-none text-white uppercase bg-gray-700 rounded-lg"
+      >Edit</button>
+      <button
+        type="button"
+        @click="fireAction(index)"
+        class="px-5 py-3 text-sm leading-none text-white uppercase bg-red-600 rounded-lg"
+      >Remove</button>
+    </div>
   </div>
 </template>
 

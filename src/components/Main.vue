@@ -1,46 +1,62 @@
 <template>
-  <main class="p-8 mx-auto">
+  <main class="relative z-10 flex flex-col max-w-screen-xl min-h-screen px-4 pt-8 mx-auto">
     <Alert :status="copied" v-if="copied" />
+    <Title />
+    <Upload @action="parseFile" />
 
-    <input type="file" ref="fileInput" @input="parseFile" />
-    <div class="flex items-center mt-4 space-x-4">
-      <input type="text" v-model="strip" class="w-full form-input" placeholder="Text to remove" />
-      <input type="text" v-model="status" class="w-full form-input" placeholder="Status" />
-    </div>
-
-    <div class="flex items-center mt-8 space-x-4">
-      <button
-        type="button"
-        class="px-6 py-3 leading-none text-white bg-green-500 rounded"
-        v-clipboard:copy="generatedRedirects"
-        v-clipboard:success="handleCopySuccess"
-        v-clipboard:error="handleCopyError"
-      >
-        Copy Code
-      </button>
-    </div>
-
-    <div class="grid grid-cols-2 gap-4 mt-8">
-      <div v-if="results" class="p-4 space-y-4 bg-gray-100">
-        <Redirect
-          v-for="(result, index) in results"
-          :key="result[0]"
-          :from="stripText(result[0])"
-          :to="stripText(result[1])"
-          :status="status"
-          :index="index"
-          @action="handleRemove"
+    <div class="flex items-center justify-between mt-8">
+      <div class="flex items-center space-x-4">
+        <input
+          type="text"
+          v-model="strip"
+          class="p-6 text-lg placeholder-gray-400 bg-gray-200 border-0 rounded-lg form-input"
+          placeholder="TEXT TO REMOVE"
         />
+        <input
+          type="text"
+          v-model="status"
+          class="w-48 p-6 text-lg placeholder-gray-400 bg-gray-200 border-0 rounded-lg form-input"
+          placeholder="STATUS"
+        />
+        <button
+          type="button"
+          class="text-sm text-gray-700 underline uppercase hover:no-underline"
+        >How it works</button>
       </div>
-
-      <textarea v-html="generatedRedirects" class="w-full h-64 form-textarea"></textarea>
+      <div>
+        <button
+          type="button"
+          class="px-12 py-5 text-lg leading-none text-white uppercase bg-green-600 rounded-lg"
+          v-clipboard:copy="generatedRedirects"
+          v-clipboard:success="handleCopySuccess"
+          v-clipboard:error="handleCopyError"
+        >Copy Code</button>
+      </div>
     </div>
+
+    <div class="flex-1 h-full p-8 mt-4 space-y-4 bg-gray-200 rounded-t-lg">
+      <Redirect
+        v-for="(result, index) in results"
+        :key="result[0]"
+        :from="stripText(result[0])"
+        :to="stripText(result[1])"
+        :status="status"
+        :index="index"
+        @action="handleRemove"
+      />
+      <NoUpload v-if="results === null" />
+    </div>
+
+    <textarea v-html="generatedRedirects" class="hidden"></textarea>
   </main>
 </template>
 
 <script>
 import Redirect from '@/components/Redirect'
 import Alert from '@/components/Alert'
+import Title from '@/components/Title'
+import Upload from '@/components/Upload'
+import NoUpload from '@/components/NoUpload'
 
 export default {
   data() {
@@ -70,7 +86,7 @@ export default {
   },
   methods: {
     parseFile() {
-      const fileInput = this.$refs.fileInput
+      const fileInput = event.currentTarget
       const self = this
 
       this.$papa.parse(fileInput.files[0], {
@@ -97,6 +113,9 @@ export default {
   components: {
     Redirect,
     Alert,
+    Title,
+    Upload,
+    NoUpload,
   },
 }
 </script>

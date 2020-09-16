@@ -11,6 +11,7 @@
     "@tailwindcss/ui": "^0.6.1",
     "core-js": "^3.6.5",
     "tailwindcss": "^1.8.10",
+    "typeface-archivo-black": "^0.0.72",
     "vue": "^2.6.11",
     "vue-clipboard2": "^0.3.1",
     "vue-papa-parse": "^2.0.0"

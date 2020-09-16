@@ -1,13 +1,11 @@
 <template>
   <transition name="fade">
     <div
-      class="absolute top-0 right-0 px-6 py-3 transform -translate-x-4 translate-y-4 rounded"
+      class="absolute top-0 right-0 px-12 py-4 transform translate-y-4 rounded"
       :class="alertClass"
       v-if="visible"
     >
-      <span class="text-lg font-semibold leading-none text-white">
-        {{ alertText }}
-      </span>
+      <span class="text-lg font-semibold leading-none text-white">{{ alertText }}</span>
     </div>
   </transition>
 </template>
@@ -24,7 +22,7 @@ export default {
   },
   computed: {
     alertClass() {
-      return this.status ? 'bg-green-500' : 'bg-red-500'
+      return this.status ? 'bg-green-600' : 'bg-red-600'
     },
     alertText() {
       return this.status ? 'Copy Success 🎉' : 'Copy Failed 👎'
