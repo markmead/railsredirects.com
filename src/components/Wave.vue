@@ -7,15 +7,9 @@
     viewBox="0 0 2302.104 511.579"
   >
     <defs>
-      <linearGradient
-        id="linear-gradient"
-        y1="0.618"
-        x2="1"
-        y2="0.715"
-        gradientUnits="objectBoundingBox"
-      >
-        <stop offset="0" stop-color="#5800ff" />
-        <stop offset="1" stop-color="#2702f5" />
+      <linearGradient id="linear-gradient" y1="0.618" x2="1" y2="0.715" gradientUnits="objectBoundingBox">
+        <stop offset="0" stop-color="#5850ec" />
+        <stop offset="1" stop-color="#1c64f2" />
       </linearGradient>
     </defs>
     <path

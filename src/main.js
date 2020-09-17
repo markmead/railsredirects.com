@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VuePapaParse from 'vue-papa-parse'
 import VueClipboard from 'vue-clipboard2'
+import 'typeface-archivo-black'
 
 import App from './App.vue'
 

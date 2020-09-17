@@ -1,5 +1,5 @@
 <template>
-  <main class="relative z-10 flex flex-col max-w-screen-xl min-h-screen px-4 pt-8 mx-auto">
+  <main class="relative z-10 max-w-screen-xl min-h-screen px-4 py-8 mx-auto">
     <Alert :status="copied" v-if="copied" />
     <Title />
     <Upload @action="parseFile" />
@@ -9,13 +9,13 @@
         <input
           type="text"
           v-model="strip"
-          class="p-6 text-lg placeholder-gray-400 bg-gray-200 border-0 rounded-lg form-input"
+          class="p-6 text-lg placeholder-gray-400 transition-colors duration-150 ease-in-out bg-gray-200 border-0 rounded-lg form-input hover:bg-cool-gray-200"
           placeholder="TEXT TO REMOVE"
         />
         <input
           type="text"
           v-model="status"
-          class="w-48 p-6 text-lg placeholder-gray-400 bg-gray-200 border-0 rounded-lg form-input"
+          class="w-48 p-6 text-lg placeholder-gray-400 transition-colors duration-150 ease-in-out bg-gray-200 border-0 rounded-lg form-input hover:bg-cool-gray-200"
           placeholder="STATUS"
         />
         <button type="button" @click="help = true" class="text-sm text-gray-700 underline uppercase hover:no-underline">
@@ -25,7 +25,7 @@
       <div class="space-x-4">
         <button
           type="button"
-          class="px-12 py-5 text-lg leading-none text-white uppercase bg-green-600 rounded-lg"
+          class="px-12 py-5 text-lg leading-none text-white uppercase transition-shadow duration-150 ease-in-out bg-green-600 rounded-lg hover:shadow-xl"
           v-clipboard:copy="generatedRedirects"
           v-clipboard:success="handleCopySuccess"
           v-clipboard:error="handleCopyError"
@@ -35,7 +35,7 @@
       </div>
     </div>
 
-    <div class="flex-1 h-full p-8 mt-4 space-y-4 bg-gray-200 rounded-t-lg">
+    <div class="p-8 mt-4 space-y-4 bg-gray-200 rounded-lg">
       <Redirect
         v-for="(result, index) in results"
         :key="result[0]"
