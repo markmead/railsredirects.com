@@ -100,6 +100,11 @@ export default {
       this.$papa.parse(fileInput.files[0], {
         complete(res) {
           self.results = res.data
+
+          this.$ga.event({
+            eventCategory: 'CSV Upload',
+            eventAction: 'success',
+          })
         },
       })
     },
@@ -113,9 +118,19 @@ export default {
     },
     handleCopySuccess() {
       this.copied = true
+
+      this.$ga.event({
+        eventCategory: 'Copy',
+        eventAction: 'success',
+      })
     },
     handleCopyError() {
       this.copied = false
+
+      this.$ga.event({
+        eventCategory: 'Copy',
+        eventAction: 'failed',
+      })
     },
   },
   components: {
