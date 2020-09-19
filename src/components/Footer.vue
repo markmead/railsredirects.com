@@ -3,13 +3,15 @@
     <a
       href="https://github.com/markmead/rails-redirects-creator"
       target="_blank"
-      class="text-sm underline uppercase hover:no-underline"
-    >
-      GitHub
-    </a>
+      class="underline uppercase hover:no-underline"
+      rel="noreferrer"
+    >GitHub</a>
     <span>/</span>
-    <a href="https://twitter.com/itsmarkmead" target="_blank" class="text-sm underline uppercase hover:no-underline">
-      Twitter
-    </a>
+    <a
+      href="https://twitter.com/itsmarkmead"
+      target="_blank"
+      class="underline uppercase hover:no-underline"
+      rel="noreferrer"
+    >Twitter</a>
   </footer>
 </template>
