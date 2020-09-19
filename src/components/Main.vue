@@ -4,9 +4,7 @@
     <Title />
     <Upload @action="parseFile" />
 
-    <div
-      class="flex flex-col items-center mt-8 space-y-4 md:items-center md:justify-between md:flex-row md:space-y-0"
-    >
+    <div class="flex flex-col items-center mt-8 space-y-4 md:items-center md:justify-between md:flex-row md:space-y-0">
       <div class="flex items-center space-x-4">
         <label for="text_to_remove" class="sr-only">Text to remove</label>
         <input
@@ -30,14 +28,18 @@
           type="button"
           @click="help = true"
           class="order-first text-sm text-gray-700 underline uppercase hover:no-underline"
-        >How it works</button>
+        >
+          How it works
+        </button>
         <button
           type="button"
           class="px-12 py-5 text-lg leading-none text-white uppercase transition-shadow duration-150 ease-in-out bg-green-600 rounded-lg hover:shadow-xl"
           v-clipboard:copy="generatedRedirects"
           v-clipboard:success="handleCopySuccess"
           v-clipboard:error="handleCopyError"
-        >Copy Code</button>
+        >
+          Copy Code
+        </button>
       </div>
     </div>
 
@@ -104,11 +106,6 @@ export default {
       this.$papa.parse(fileInput.files[0], {
         complete(res) {
           self.results = res.data
-
-          this.$ga.event({
-            eventCategory: 'CSV Upload',
-            eventAction: 'success',
-          })
         },
       })
     },
@@ -123,17 +120,20 @@ export default {
     handleCopySuccess() {
       this.copied = true
 
-      this.$ga.event({
-        eventCategory: 'Copy',
-        eventAction: 'success',
+      this.$gtag.event('Success', {
+        event_category: 'Copy',
       })
     },
     handleCopyError() {
       this.copied = false
 
-      this.$ga.event({
-        eventCategory: 'Copy',
-        eventAction: 'failed',
+      this.$gtag.event('Failed', {
+        event_category: 'Copy',
+      })
+    },
+    track() {
+      this.$gtag.pageview({
+        page_path: '/',
       })
     },
   },
