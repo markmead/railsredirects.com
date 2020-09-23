@@ -4,24 +4,30 @@
     <Title />
     <Upload @action="parseFile" />
 
-    <div class="flex flex-col items-center mt-8 space-y-4 md:items-center md:justify-between md:flex-row md:space-y-0">
+    <div
+      class="flex flex-col items-center mt-8 space-y-4 md:items-center md:justify-between md:flex-row md:space-y-0"
+    >
       <div class="flex items-center space-x-4">
-        <label for="text_to_remove" class="sr-only">Text to remove</label>
-        <input
-          type="text"
-          v-model="strip"
-          id="text_to_remove"
-          class="w-2/3 p-6 text-lg placeholder-gray-400 transition-colors duration-150 ease-in-out bg-gray-200 border-0 rounded-lg form-input hover:bg-cool-gray-200"
-          placeholder="TEXT TO REMOVE"
-        />
-        <label for="status" class="sr-only">Status</label>
-        <input
-          type="text"
-          v-model="status"
-          id="status"
-          class="w-1/3 p-6 text-lg placeholder-gray-400 transition-colors duration-150 ease-in-out bg-gray-200 border-0 rounded-lg form-input hover:bg-cool-gray-200"
-          placeholder="STATUS"
-        />
+        <div class="w-2/3">
+          <label for="text_to_remove" class="sr-only">Text to remove</label>
+          <input
+            type="text"
+            v-model="strip"
+            id="text_to_remove"
+            class="w-full p-6 text-lg placeholder-gray-400 transition-colors duration-150 ease-in-out bg-gray-200 border-0 rounded-lg form-input hover:bg-cool-gray-200"
+            placeholder="TEXT TO REMOVE"
+          />
+        </div>
+        <div class="w-1/3">
+          <label for="status" class="sr-only">Status</label>
+          <input
+            type="text"
+            v-model="status"
+            id="status"
+            class="w-full p-6 text-lg placeholder-gray-400 transition-colors duration-150 ease-in-out bg-gray-200 border-0 rounded-lg form-input hover:bg-cool-gray-200"
+            placeholder="STATUS"
+          />
+        </div>
       </div>
       <div class="flex items-center space-x-4">
         <button
@@ -46,12 +52,12 @@
     <div class="p-8 mt-4 space-y-4 bg-gray-200 rounded-lg">
       <Redirect
         v-for="(result, index) in results"
-        :key="result[0]"
+        :key="index"
         :from="stripText(result[0])"
         :to="stripText(result[1])"
         :status="status"
         :index="index"
-        @action="handleRemove"
+        @action="handleRemove(index)"
       />
       <NoUpload v-if="results === null" />
     </div>
@@ -115,6 +121,7 @@ export default {
       return substring === '' ? '/' : substring
     },
     handleRemove(index) {
+      console.log(index)
       this.results.splice(index, 1)
     },
     handleCopySuccess() {
