@@ -111,7 +111,11 @@ export default {
 
       this.$papa.parse(fileInput.files[0], {
         complete(res) {
-          self.results = res.data
+          let results = res.data.filter(function (result) {
+            return result[0] !== ''
+          })
+
+          self.results = results
         },
       })
     },
