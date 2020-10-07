@@ -1,17 +1,15 @@
 import Vue from 'vue'
 import VuePapaParse from 'vue-papa-parse'
 import VueClipboard from 'vue-clipboard2'
-import 'typeface-archivo-black'
-
+import VueGtag from 'vue-gtag'
 import App from './App.vue'
+
+import 'typeface-archivo-black'
 
 import '@/assets/css/main.css'
 
 Vue.use(VuePapaParse)
 Vue.use(VueClipboard)
-
-import VueGtag from 'vue-gtag'
-
 Vue.use(VueGtag, {
   config: { id: 'UA-177960351-2' },
 })
