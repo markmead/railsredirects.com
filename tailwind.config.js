@@ -1,18 +1,15 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
-
 module.exports = {
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-  },
-  purge: ['./src/*.vue', './src/components/*.vue'],
+  purge: [],
+  darkMode: 'media',
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Archivo Black', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter'],
       },
     },
   },
-  variants: {},
-  plugins: [require('@tailwindcss/ui'), require('@tailwindcss/typography')],
+  variants: {
+    extend: {},
+  },
+  plugins: [require('@tailwindcss/forms')],
 }

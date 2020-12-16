@@ -1,24 +1,3 @@
-# rails-redrirect-creator
+# Rails Redirects
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Quickly create redirects for a Rails apps without any coding experience. Proven to annoy developers 100% less.

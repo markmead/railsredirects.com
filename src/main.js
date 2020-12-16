@@ -1,12 +1,10 @@
+import App from './App.vue'
 import Vue from 'vue'
-import VuePapaParse from 'vue-papa-parse'
 import VueClipboard from 'vue-clipboard2'
 import VueGtag from 'vue-gtag'
-import App from './App.vue'
+import VuePapaParse from 'vue-papa-parse'
 
-import 'typeface-archivo-black'
-
-import '@/assets/css/main.css'
+import 'tailwindcss/tailwind.css'
 
 Vue.use(VuePapaParse)
 Vue.use(VueClipboard)
