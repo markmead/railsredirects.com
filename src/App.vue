@@ -65,10 +65,7 @@
           </div>
         </div>
 
-        <ul
-          v-if="results"
-          class="p-8 mt-6 space-y-2 overflow-y-auto text-xs border-2 border-gray-200 border-dashed rounded-md h-96"
-        >
+        <ul class="p-8 mt-6 space-y-2 overflow-y-auto text-xs border-2 border-gray-200 border-dashed rounded-md h-96">
           <li v-for="(result, index) of results" :key="index" class="flex items-center pr-4 result-list-item">
             <button
               @click="handleRemoveResult(index)"
@@ -96,7 +93,12 @@ export default {
   data() {
     return {
       code: false,
-      results: null,
+      results: [
+        ['/old-path', '/new-path'],
+        ['/nobody-uses-this-link', '/everyone-uses-this-link'],
+        ['/2020-will-be-our-year', '/2021-will-be-our-year'],
+        ['/women-in-blue-shirt', '/women-in-red-shirt'],
+      ],
       status: '301',
       strip: '',
     }
@@ -105,7 +107,7 @@ export default {
     generatedRedirects() {
       if (!this.results) return
 
-      let redirects
+      let redirects = ''
 
       for (let result of this.results) {
         const from = this.stripText(result[0])
