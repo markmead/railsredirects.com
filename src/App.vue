@@ -22,9 +22,9 @@
       </span>
     </Header>
 
-    <section class="bg-gray-50">
+    <section class="bg-gray-50 dark:bg-black">
       <div class="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold leading-tight text-gray-900">Configure</h2>
+        <h2 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">Configure</h2>
 
         <div class="max-w-3xl mt-6 space-y-4 md:flex md:space-y-0 md:space-x-4">
           <div>
@@ -74,7 +74,7 @@
             >
               Delete
             </button>
-            <span class="font-mono truncate">
+            <span class="font-mono text-gray-900 truncate dark:text-white">
               {{ formatRedirect(result[0], result[1]) }}
             </span>
           </li>
