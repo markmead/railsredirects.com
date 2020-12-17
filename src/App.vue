@@ -75,7 +75,7 @@
               Delete
             </button>
             <span class="font-mono truncate">
-              get "{{ stripText(result[0]) }}", to: redirect("{{ stripText(result[1]) }}", status: {{ status }}
+              {{ formatRedirect(result[0], result[1]) }}
             </span>
           </li>
         </ul>
@@ -110,10 +110,7 @@ export default {
       let redirects = ''
 
       for (let result of this.results) {
-        const from = this.stripText(result[0])
-        const to = this.stripText(result[1])
-
-        redirects += `get "${from}", to: redirect("${to}", status: ${this.status})\n`
+        redirects += `${this.formatRedirect(result[0], result[1])}\n`
       }
 
       return redirects
@@ -136,6 +133,9 @@ export default {
           self.results = results
         },
       })
+    },
+    formatRedirect(from, to) {
+      return `get "${this.stripText(from)}", to: redirect("${this.stripText(to)}", status: ${this.status})`
     },
     stripText(string) {
       let substring = this.strip ? string.replace(this.strip, '') : string
